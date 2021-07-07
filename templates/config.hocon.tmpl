@@ -1,0 +1,36 @@
+source = "kinesis"
+sink = "kinesis"
+aws {
+  accessKey = "iam"
+  secretKey = "iam"
+}
+kinesis {
+  initialPosition = "${initial_position}"
+  initialTimestamp = ""
+  maxRecords = 10000
+  region = "${region}"
+  appName = "${app_name}"
+  disableCloudWatch = true
+}
+streams {
+  inStreamName = "${in_stream_name}"
+  outStreamName = "${out_stream_name}"
+  buffer {
+    byteLimit = 67108864
+    recordLimit = 100000
+    timeLimit = ${time_limit_ms}
+  }
+}
+s3 {
+  region = "${region}"
+  bucket = "${s3_bucket_path}"
+  partitionedBucket = "${s3_bucket_path}/partitioned"
+  format = "${s3_format}"
+  maxTimeout = 120000
+}
+nsq {
+  channelName = ""
+  host = ""
+  port = -1
+  lookupPort = -1
+}
