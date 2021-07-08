@@ -60,6 +60,30 @@ variable "amazon_linux_2_ami_id" {
   type        = string
 }
 
+variable "kcl_read_min_capacity" {
+  description = "The minimum READ capacity for the KCL DynamoDB table"
+  type        = number
+  default     = 1
+}
+
+variable "kcl_read_max_capacity" {
+  description = "The maximum READ capacity for the KCL DynamoDB table"
+  type        = number
+  default     = 10
+}
+
+variable "kcl_write_min_capacity" {
+  description = "The minimum WRITE capacity for the KCL DynamoDB table"
+  type        = number
+  default     = 1
+}
+
+variable "kcl_write_max_capacity" {
+  description = "The maximum WRITE capacity for the KCL DynamoDB table"
+  type        = number
+  default     = 10
+}
+
 variable "tags" {
   description = "The tags to append to this resource"
   default     = {}

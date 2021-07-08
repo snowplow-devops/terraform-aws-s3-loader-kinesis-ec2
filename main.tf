@@ -65,15 +65,31 @@ data "aws_ami" "amazon_linux_2" {
 resource "aws_dynamodb_table" "kcl" {
   name           = var.name
   hash_key       = "leaseKey"
-  write_capacity = 5
-  read_capacity  = 5
+  write_capacity = 1
+  read_capacity  = 1
 
   attribute {
     name = "leaseKey"
     type = "S"
   }
 
+  lifecycle {
+    ignore_changes = [write_capacity, read_capacity]
+  }
+
   tags = local.tags
+}
+
+module "kcl_autoscaling" {
+  source  = "snowplow-devops/dynamodb-autoscaling/aws"
+  version = "0.1.0"
+
+  table_name = aws_dynamodb_table.kcl.id
+
+  read_min_capacity  = var.kcl_read_min_capacity
+  read_max_capacity  = var.kcl_read_max_capacity
+  write_min_capacity = var.kcl_write_min_capacity
+  write_max_capacity = var.kcl_write_max_capacity
 }
 
 # --- IAM: Roles & Permissions
