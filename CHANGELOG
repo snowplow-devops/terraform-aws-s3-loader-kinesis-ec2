@@ -1,3 +1,7 @@
+Version 0.1.2 (2021-07-08)
+--------------------------
+Make buffer limits configurable (#2)
+
 Version 0.1.1 (2021-07-08)
 --------------------------
 Enable auto-scaling for KCL table (#1)
