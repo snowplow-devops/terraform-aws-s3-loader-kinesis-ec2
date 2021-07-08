@@ -16,8 +16,8 @@ streams {
   inStreamName = "${in_stream_name}"
   outStreamName = "${out_stream_name}"
   buffer {
-    byteLimit = 67108864
-    recordLimit = 100000
+    byteLimit = ${byte_limit}
+    recordLimit = ${record_limit}
     timeLimit = ${time_limit_ms}
   }
 }

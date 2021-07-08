@@ -124,8 +124,20 @@ variable "initial_position" {
   type        = string
 }
 
+variable "byte_limit" {
+  description = "The amount of bytes to buffer events before pushing them to S3"
+  default     = 25000000
+  type        = number
+}
+
+variable "record_limit" {
+  description = "The number of events to buffer before pushing them to S3"
+  default     = 100000
+  type        = number
+}
+
 variable "time_limit_ms" {
-  description = "The amount of time to capture events before pushing them to S3"
+  description = "The amount of time to buffer events before pushing them to S3"
   default     = 180000
   type        = number
 }
