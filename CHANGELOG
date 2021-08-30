@@ -1,3 +1,7 @@
+Version 0.2.0 (2021-08-30)
+--------------------------
+Leverage CloudWatch Logs as default (#8)
+
 Version 0.1.3 (2021-08-12)
 --------------------------
 Update License badge to use HTTPS (#4)
