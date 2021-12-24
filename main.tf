@@ -3,7 +3,7 @@ locals {
   module_version = "0.2.0"
 
   app_name    = "s3-loader"
-  app_version = "1.0.0"
+  app_version = "2.1.3"
 
   local_tags = {
     Name           = var.name
@@ -268,6 +268,7 @@ locals {
     in_stream_name   = var.in_stream_name
     out_stream_name  = var.bad_stream_name
     region           = data.aws_region.current.name
+    purpose          = var.purpose
     s3_bucket_path   = "${var.s3_bucket_name}/${local.s3_object_prefix}"
     s3_format        = var.s3_format
     initial_position = var.initial_position

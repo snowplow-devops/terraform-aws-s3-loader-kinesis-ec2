@@ -104,6 +104,12 @@ variable "cloudwatch_logs_retention_days" {
 
 # --- Configuration options
 
+variable "purpose" {
+  description = "Describes the purpose which this S3 loader is being used for (RAW, ENRICHED_EVENTS or JSON). RAW simply sinks data 1:1, ENRICHED_EVENTS work with monitoring.statsd to report metrics (identical to RAW otherwise), SELF_DESCRIBING partitions self-describing data (such as JSON) by its schema"
+  default     = "RAW"
+  type        = string
+}
+
 variable "in_stream_name" {
   description = "The name of the input kinesis stream that the S3 Loader will pull data from"
   type        = string

@@ -60,6 +60,7 @@ module "s3_loader_enriched" {
 }
 ```
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -128,6 +129,7 @@ module "s3_loader_enriched" {
 | <a name="input_kcl_write_min_capacity"></a> [kcl\_write\_min\_capacity](#input\_kcl\_write\_min\_capacity) | The minimum WRITE capacity for the KCL DynamoDB table | `number` | `1` | no |
 | <a name="input_max_size"></a> [max\_size](#input\_max\_size) | The maximum number of servers in this server-group | `number` | `2` | no |
 | <a name="input_min_size"></a> [min\_size](#input\_min\_size) | The minimum number of servers in this server-group | `number` | `1` | no |
+| <a name="input_purpose"></a> [purpose](#input\_purpose) | Describes the purpose which this S3 loader is being used for (RAW, ENRICHED\_EVENTS or JSON). RAW simply sinks data 1:1, ENRICHED\_EVENTS work with monitoring.statsd to report metrics (identical to RAW otherwise), SELF\_DESCRIBING partitions self-describing data (such as JSON) by its schema | `string` | `"RAW"` | no |
 | <a name="input_record_limit"></a> [record\_limit](#input\_record\_limit) | The number of events to buffer before pushing them to S3 | `number` | `100000` | no |
 | <a name="input_s3_format"></a> [s3\_format](#input\_s3\_format) | The format of the data to be loaded into S3 ('gzip' or 'lzo') | `string` | `"gzip"` | no |
 | <a name="input_ssh_ip_allowlist"></a> [ssh\_ip\_allowlist](#input\_ssh\_ip\_allowlist) | The list of CIDR ranges to allow SSH traffic from | `list(any)` | <pre>[<br>  "0.0.0.0/0"<br>]</pre> | no |
@@ -143,6 +145,7 @@ module "s3_loader_enriched" {
 | <a name="output_asg_id"></a> [asg\_id](#output\_asg\_id) | ID of the ASG |
 | <a name="output_asg_name"></a> [asg\_name](#output\_asg\_name) | Name of the ASG |
 | <a name="output_sg_id"></a> [sg\_id](#output\_sg\_id) | ID of the security group attached to the S3 Loader servers |
+<!-- END_TF_DOCS -->
 
 # Copyright and license
 
