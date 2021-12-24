@@ -1,36 +1,25 @@
-source = "kinesis"
-sink = "kinesis"
-aws {
-  accessKey = "iam"
-  secretKey = "iam"
-}
-kinesis {
-  initialPosition = "${initial_position}"
-  initialTimestamp = ""
-  maxRecords = 10000
-  region = "${region}"
-  appName = "${app_name}"
-  disableCloudWatch = true
-}
-streams {
-  inStreamName = "${in_stream_name}"
-  outStreamName = "${out_stream_name}"
-  buffer {
-    byteLimit = ${byte_limit}
-    recordLimit = ${record_limit}
-    timeLimit = ${time_limit_ms}
+{
+  "region": "${region}",
+  "purpose": "${purpose}",
+  "input": {
+    "appName": "${app_name}",
+    "streamName": "${in_stream_name}",
+    "position": "${initial_position}",
+    "maxRecords": 10000
+  },
+  "output": {
+    "s3": {
+      "path": "s3://${s3_bucket_path}",
+      "maxTimeout": 120000,
+      "compression": "${s3_format}"
+    },
+    "bad": {
+      "streamName": "${out_stream_name}"
+    }
+  },
+  "buffer": {
+    "byteLimit": ${byte_limit},
+    "recordLimit": ${record_limit},
+    "timeLimit": ${time_limit_ms}
   }
-}
-s3 {
-  region = "${region}"
-  bucket = "${s3_bucket_path}"
-  partitionedBucket = "${s3_bucket_path}/partitioned"
-  format = "${s3_format}"
-  maxTimeout = 120000
-}
-nsq {
-  channelName = ""
-  host = ""
-  port = -1
-  lookupPort = -1
 }
