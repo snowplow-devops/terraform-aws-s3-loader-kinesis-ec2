@@ -11,6 +11,9 @@
     "s3": {
       "path": "s3://${s3_bucket_path}",
       "maxTimeout": 120000,
+%{ if partition_format != "" ~}
+      "partitionFormat": "${partition_format}",
+%{ endif ~}
       "compression": "${s3_format}"
     },
     "bad": {
