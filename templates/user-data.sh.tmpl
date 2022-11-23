@@ -42,7 +42,11 @@ sudo docker run \
 %{ endif ~}
   -v $${CONFIG_DIR}:/snowplow/config \
   -e 'JAVA_OPTS=${java_opts}' \
+%{ if s3_format == "lzo" ~}
+  snowplow/snowplow-s3-loader:${version}-lzo \
+%{ else ~}
   snowplow/snowplow-s3-loader:${version} \
+%{ endif ~}
   --config /snowplow/config/s3_loader.hocon
 
 ${telemetry_script}
