@@ -1,3 +1,10 @@
+Version 0.3.0 (2022-11-23)
+--------------------------
+Increase memory allocation for application (#13)
+Bump app_version to 2.2.5 (#14)
+Bump copyright to 2021-2022 (#15)
+Support output.s3.partitionFormat in HOCON config file (#12)
+
 Version 0.2.1 (2022-01-07)
 --------------------------
 Bump S3 Loader to 2.1.3 (#10)
