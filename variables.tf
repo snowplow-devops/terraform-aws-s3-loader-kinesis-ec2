@@ -166,6 +166,12 @@ variable "time_limit_ms" {
   type        = number
 }
 
+variable "partition_format" {
+  description = "The pattern to partition data saved to S3 (e.g. https://github.com/snowplow/snowplow-s3-loader/blob/master/config/config.hocon.sample#L28-L31)"
+  default     = ""
+  type        = string
+}
+
 # --- Telemetry
 
 variable "telemetry_enabled" {
