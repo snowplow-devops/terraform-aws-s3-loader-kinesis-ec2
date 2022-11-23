@@ -3,7 +3,7 @@ locals {
   module_version = "0.2.1"
 
   app_name    = "s3-loader"
-  app_version = "2.1.3"
+  app_version = "2.2.5"
 
   local_tags = {
     Name           = var.name
@@ -296,6 +296,9 @@ locals {
 
     container_memory = "${module.instance_type_metrics.memory_application_mb}m"
     java_opts        = var.java_opts
+
+    # Used to determine image tag to pull down
+    s3_format = var.s3_format
   })
 }
 
