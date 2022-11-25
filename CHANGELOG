@@ -1,3 +1,7 @@
+Version 0.3.1 (2022-11-25)
+--------------------------
+Change default instance_type to t3a.micro (#17)
+
 Version 0.3.0 (2022-11-23)
 --------------------------
 Increase memory allocation for application (#13)
