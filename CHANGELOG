@@ -1,3 +1,8 @@
+Version 0.4.0 (2023-02-27)
+--------------------------
+Use service module and leverage IMDSv2 (#18)
+Bump app_version to 2.2.6 (#19)
+
 Version 0.3.1 (2022-11-25)
 --------------------------
 Change default instance_type to t3a.micro (#17)
