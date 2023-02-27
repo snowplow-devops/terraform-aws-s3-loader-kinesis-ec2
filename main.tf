@@ -1,6 +1,6 @@
 locals {
   module_name    = "s3-loader-kinesis-ec2"
-  module_version = "0.3.1"
+  module_version = "0.4.0"
 
   app_name    = "s3-loader"
   app_version = "2.2.6"
