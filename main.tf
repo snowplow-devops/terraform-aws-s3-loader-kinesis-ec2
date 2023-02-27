@@ -3,7 +3,7 @@ locals {
   module_version = "0.3.1"
 
   app_name    = "s3-loader"
-  app_version = "2.2.5"
+  app_version = "2.2.6"
 
   local_tags = {
     Name           = var.name
