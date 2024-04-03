@@ -133,6 +133,7 @@ module "s3_loader_enriched" {
 | <a name="input_max_size"></a> [max\_size](#input\_max\_size) | The maximum number of servers in this server-group | `number` | `2` | no |
 | <a name="input_min_size"></a> [min\_size](#input\_min\_size) | The minimum number of servers in this server-group | `number` | `1` | no |
 | <a name="input_partition_format"></a> [partition\_format](#input\_partition\_format) | The pattern to partition data saved to S3 (e.g. https://github.com/snowplow/snowplow-s3-loader/blob/master/config/config.hocon.sample#L28-L31) | `string` | `""` | no |
+| <a name="input_private_ecr_registry"></a> [private\_ecr\_registry](#input\_private\_ecr\_registry) | The URL of an ECR registry that the sub-account has access to (e.g. '000000000000.dkr.ecr.cn-north-1.amazonaws.com.cn/') | `string` | `""` | no |
 | <a name="input_purpose"></a> [purpose](#input\_purpose) | Describes the purpose which this S3 loader is being used for (RAW, ENRICHED\_EVENTS or JSON). RAW simply sinks data 1:1, ENRICHED\_EVENTS work with monitoring.statsd to report metrics (identical to RAW otherwise), SELF\_DESCRIBING partitions self-describing data (such as JSON) by its schema | `string` | `"RAW"` | no |
 | <a name="input_record_limit"></a> [record\_limit](#input\_record\_limit) | The number of events to buffer before pushing them to S3 | `number` | `100000` | no |
 | <a name="input_s3_format"></a> [s3\_format](#input\_s3\_format) | The format of the data to be loaded into S3 ('gzip' or 'lzo') | `string` | `"gzip"` | no |
