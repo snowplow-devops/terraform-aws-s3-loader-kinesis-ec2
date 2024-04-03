@@ -5,6 +5,10 @@ sudo base64 --decode << EOF > $${CONFIG_DIR}/s3_loader.hocon
 ${config_b64}
 EOF
 
+%{ if is_private_ecr_registry }
+aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${private_ecr_registry}
+%{ endif ~}
+
 sudo docker run \
   -d \
   --name s3_loader \
@@ -24,9 +28,9 @@ sudo docker run \
   --env ACCEPT_LIMITED_USE_LICENSE=${accept_limited_use_license} \
   --env INSTANCE_ID=$(get_instance_id) \
 %{ if s3_format == "lzo" ~}
-  snowplow/snowplow-s3-loader:${version}-lzo \
+  ${private_ecr_registry}snowplow/snowplow-s3-loader:${version}-lzo \
 %{ else ~}
-  snowplow/snowplow-s3-loader:${version} \
+  ${private_ecr_registry}snowplow/snowplow-s3-loader:${version} \
 %{ endif ~}
   --config /snowplow/config/s3_loader.hocon
 
