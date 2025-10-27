@@ -17,7 +17,7 @@ variable "name" {
 variable "app_version" {
   description = "App version to use. This variable facilitates dev flow, the modules may not work with anything other than the default value."
   type        = string
-  default     = "2.2.8"
+  default     = "3.0.0"
 }
 
 variable "vpc_id" {
@@ -172,8 +172,8 @@ variable "scale_down_eval_minutes" {
 # --- Configuration options
 
 variable "purpose" {
-  description = "Describes the purpose which this S3 loader is being used for (RAW, ENRICHED_EVENTS or JSON). RAW simply sinks data 1:1, ENRICHED_EVENTS work with monitoring.statsd to report metrics (identical to RAW otherwise), SELF_DESCRIBING partitions self-describing data (such as JSON) by its schema"
-  default     = "RAW"
+  description = "Describes the purpose which this S3 loader is being used for (ENRICHED_EVENTS or SELF_DESCRIBING). ENRICHED_EVENTS work with monitoring.statsd to report metrics (identical to RAW otherwise), SELF_DESCRIBING partitions self-describing data by its schema"
+  default     = "ENRICHED_EVENTS"
   type        = string
 }
 
@@ -197,12 +197,6 @@ variable "s3_object_prefix" {
   type        = string
 }
 
-variable "s3_format" {
-  description = "The format of the data to be loaded into S3 ('gzip' or 'lzo')"
-  default     = "gzip"
-  type        = string
-}
-
 variable "initial_position" {
   description = "Where to start processing the input Kinesis Stream from (TRIM_HORIZON or LATEST)"
   default     = "TRIM_HORIZON"
@@ -212,12 +206,6 @@ variable "initial_position" {
 variable "byte_limit" {
   description = "The amount of bytes to buffer events before pushing them to S3"
   default     = 25000000
-  type        = number
-}
-
-variable "record_limit" {
-  description = "The number of events to buffer before pushing them to S3"
-  default     = 100000
   type        = number
 }
 

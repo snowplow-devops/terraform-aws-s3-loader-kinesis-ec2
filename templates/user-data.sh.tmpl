@@ -27,11 +27,7 @@ sudo docker run \
   --env JDK_JAVA_OPTIONS='${java_opts}' \
   --env ACCEPT_LIMITED_USE_LICENSE=${accept_limited_use_license} \
   --env INSTANCE_ID=$(get_instance_id) \
-%{ if s3_format == "lzo" ~}
-  ${private_ecr_registry}snowplow/snowplow-s3-loader:${version}-lzo \
-%{ else ~}
   ${private_ecr_registry}snowplow/snowplow-s3-loader:${version} \
-%{ endif ~}
   --config /snowplow/config/s3_loader.hocon
 
 ${telemetry_script}
