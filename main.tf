@@ -276,11 +276,9 @@ locals {
     region           = data.aws_region.current.name
     purpose          = var.purpose
     s3_bucket_path   = "${var.s3_bucket_name}/${local.s3_object_prefix}"
-    s3_format        = var.s3_format
     initial_position = var.initial_position
 
     byte_limit    = var.byte_limit
-    record_limit  = var.record_limit
     time_limit_ms = var.time_limit_ms
 
     partition_format = var.partition_format
@@ -299,9 +297,6 @@ locals {
 
     container_memory = "${module.instance_type_metrics.memory_application_mb}m"
     java_opts        = var.java_opts
-
-    # Used to determine image tag to pull down
-    s3_format = var.s3_format
 
     is_private_ecr_registry = local.is_private_ecr_registry
     private_ecr_registry    = var.private_ecr_registry
